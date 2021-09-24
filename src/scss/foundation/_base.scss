@@ -1,0 +1,72 @@
+@use '../global' as *;
+
+html {
+  background-color: #FFFFFF;
+}
+
+$p-side: 20px;
+$maxWidthContainer: 1200px;
+$maxWidthContainer: $maxWidthContainer + 2 * $p-side;
+
+.container {
+  max-width: $maxWidthContainer;
+  margin: 0 auto;
+  padding: 0 $p-side;
+
+  @media screen and (min-width: $bp-large) {
+    max-width: #{get-vw($maxWidthContainer, $bp-large)};
+    padding: 0 #{get-vw($p-side, $bp-large)};
+  }
+
+  @media screen and (max-width: $bp-mobile) {
+    padding: 0 12px;
+  }
+}
+
+.container-full {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 $p-side;
+
+  @media screen and (min-width: $bp-large) {
+    padding: 0 #{get-vw($p-side, $bp-large)};
+  }
+
+  @media screen and (max-width: $bp-mobile) {
+    padding: 0 12px;
+  }
+}
+
+.mt-a {
+  margin-top: auto;
+}
+
+.mt-b {
+  margin-bottom: auto;
+}
+
+.mt-1em {
+  margin-top: 1em;
+}
+
+.mt-2em {
+  margin-top: 1em;
+}
+
+.mt-05em {
+  margin-top: 0.5em;
+}
+
+.mb-1em {
+  margin-bottom: 1em;
+}
+
+.full-screen {
+  min-height: 100vh;
+}
+
+.m-auto-ws {
+  margin-left: auto;
+  margin-right: auto;
+}
+

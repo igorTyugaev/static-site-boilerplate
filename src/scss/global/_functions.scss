@@ -1,0 +1,25 @@
+@use 'variables' as *;
+@use "sass:math";
+
+@function rem($px) {
+  @return #{$px / 16}rem;
+}
+
+@function get-vw($px-vw, $base-vw: 1280px) {
+  @return math.div($px-vw * 100vw, $base-vw);
+}
+
+@function get-vh($px-vh, $base-vh: 600px) {
+  @return math.div($px-vh * 100vh, $base-vh);
+}
+
+
+@function darker($color, $tone) {
+  $adjust: -16*$tone;
+  @return adjust-color($color, $red: $adjust, $green: $adjust, $blue: $adjust);
+}
+
+@function lighter($color, $tone) {
+  $adjust: 16*$tone;
+  @return adjust-color($color, $red: $adjust, $green: $adjust, $blue: $adjust);
+}

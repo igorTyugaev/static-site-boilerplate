@@ -1,0 +1,86 @@
+@use '../global'as *;
+
+%btn-text-default {
+  font-family: $fontMain;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+
+  @media screen and (min-width: $bp-large) {
+    font-size: #{get-vw(16px, $bp-large)};
+  }
+}
+
+.button {
+  @extend %btn-text-default;
+  line-height: 125%;
+  align-items: center;
+  border-radius: 0.375em;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.5em 0.875em;
+  text-decoration: none;
+  transition: all 250ms;
+
+  /* Серая для табов*/
+  &_primary {
+    background-color: $gray;
+    border-color: $gray;
+    color: $dark-blue;
+
+    &:hover {
+      background-color: $dark-blue;
+      border-color: $dark-blue;
+      color: white;
+    }
+
+    &.active {
+      background-color: $dark-blue;
+      border-color: $dark-blue;
+      color: $white;
+
+      &:hover {
+        background-color: #{lighter($dark-blue, .65)};
+        border-color: #{lighter($dark-blue, .65)};
+      }
+    }
+  }
+
+  /* Синия для ссылкок на Facebook*/
+  &_secondary {
+    background-color: $light-blue;
+    border-color: $light-blue;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #{darker($light-blue, 1)};
+      border-color: #{darker($light-blue, 1)};
+      color: white;
+    }
+  }
+
+  /* Зеленная для квиза*/
+  &_success {
+    background-color: $green;
+    border-color: $green;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #{darker($green, 1)};
+      border-color: #{darker($green, 1)};
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.65;
+  }
+
+  &_p {
+    margin-top: auto;
+  }
+}
