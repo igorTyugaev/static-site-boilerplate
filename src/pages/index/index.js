@@ -6,3 +6,10 @@ import '../../js/common';
 import '../../js/components/demo';
 
 /* Your JS Code goes here */
+window.addEventListener('DOMContentLoaded', () => {
+
+});
+
+window.addEventListener('load', () => {
+
+});

@@ -1,8 +1,14 @@
 @charset "UTF-8";
-//@use 'foundation';
+@use './src/scss/foundation';
 
+/* INFO:
+ * Зависмые компоненты нужно запрашивать
+ * внутри самого компонента через @forward.
+ * Сюда выносить лишь глобальные компоненты, которые не являются вложенными
+ * в другой компонент или секцию
+ */
 /* List of components used on this page: */
+  //@use "./src/scss/components/header";
 
 /* List of sections used on this page: */
-
-
+  //@use "./src/scss/sections/section-primary";

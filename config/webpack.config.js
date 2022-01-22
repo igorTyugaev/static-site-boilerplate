@@ -4,6 +4,8 @@
 
 const path = require('path');
 const glob = require('glob');
+const posthtml = require('posthtml');
+const include = require('posthtml-include');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
@@ -47,6 +49,30 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+        options: {
+          sources: false,
+          preprocessor: (content, loaderContext) => {
+            let result;
+
+            try {
+              result = posthtml([include({
+                encoding: 'utf8',
+                root: './src/html/',
+              })])
+                .process(content, { sync: true });
+            } catch (error) {
+              loaderContext.emitError(error);
+
+              return content;
+            }
+
+            return result.html;
+          },
+        },
+      },
       {
         test: /\.((c|sa|sc)ss)$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
